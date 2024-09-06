@@ -9,6 +9,7 @@ router.post(
   AirplaneMiddlewares.validateCreateRequest,
   AirplaneController.createAirplane
 );
+//get all airplane
 router.get(
   "/",
   AirplaneController.getAirplanes
