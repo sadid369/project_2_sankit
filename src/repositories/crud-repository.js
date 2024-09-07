@@ -1,10 +1,11 @@
+const { StatusCodes } = require("http-status-codes");
 const { Logger } = require("../config");
 
 class CrudRepository {
   constructor(model) {
     this.model = model;
   }
-  async create(data) {
+  async create (data) {
     // try {
     //   const response = await this.model.create(data);
     //   return response;
@@ -17,7 +18,7 @@ class CrudRepository {
     const response = await this.model.create(data);
     return response;
   }
-  async destroy(data) {
+  async destroy (data) {
     const response = await this.model.destroy({
       where: {
         id: data,
@@ -25,16 +26,20 @@ class CrudRepository {
     });
     return response;
   }
-  async get(data) {
+  async get (data) {
     const response = await this.model.findByPk(data);
+    if (!response) {
+      throw new AppError('Not able to fund the resource', StatusCodes.NOT_FOUND);
+    }
     return response;
+
   }
 
-  async getAll(data) {
+  async getAll (data) {
     const response = await this.model.findAll();
     return response;
   }
-  async update(id, data) {
+  async update (id, data) {
     const response = await this.model.update(data, {
       where: {
         id: id,
