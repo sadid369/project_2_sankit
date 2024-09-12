@@ -7,9 +7,10 @@ class FlightRepository extends CrudRepository {
         // console.log(Airplane.toString());
         super(Flight);
     }
-    async getAllFlights (filter) {
+    async getAllFlights (filter, sort) {
         const response = await this.model.findAll({
-            where: filter
+            where: filter,
+            order: sort
         });
         return response;
     }
