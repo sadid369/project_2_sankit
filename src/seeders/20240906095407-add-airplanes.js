@@ -3,7 +3,7 @@ const { faker } = require("@faker-js/faker");
 const { Op } = require("sequelize");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -14,19 +14,19 @@ module.exports = {
      * }], {});
      */
 
-    for (let i = 0; i < 10; i++) {
-      await queryInterface.bulkInsert("Airplanes", [
-        {
-          modelNumber: faker.airline.airplane().name,
-          capacity: faker.number.int({ min: 180, max: 1000 }),
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ]);
-    }
+    // for (let i = 0; i < 10; i++) {
+    //   await queryInterface.bulkInsert("Airplanes", [
+    //     {
+    //       modelNumber: faker.airline.airplane().name,
+    //       capacity: faker.number.int({ min: 180, max: 1000 }),
+    //       createdAt: new Date(),
+    //       updatedAt: new Date(),
+    //     },
+    //   ]);
+    // }
   },
 
-  async down(queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -36,6 +36,6 @@ module.exports = {
     // await queryInterface.bulkDelete("Airplanes", {
     //   [Op.or]: [{ modelNumber: "Douglas DC-8-50" }],
     // });
-    await queryInterface.bulkDelete("Airplanes", {});
+    // await queryInterface.bulkDelete("Airplanes", {});
   },
 };
